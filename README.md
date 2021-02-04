@@ -36,12 +36,19 @@ The three main proposals of the paper are:
 
 ## Implementation details
  - Reports were extraced from .xml files and the frontal and lateral views were combined to generate features
+ - glove.840B.300d was used for obtaining vector representations and generating the embedding matrix. It is available [here](https://nlp.stanford.edu/projects/glove/).
  - Features were extracted using DenseNet121 model loaded with ChexNet weights. The paper used a VGG-19 network.
  - The features were fed into a model with the following structure
 <p align="center">
 <img src="https://github.com/01pooja10/Medical-Report-Generator/blob/main/misc/attn_mod.jpg" height="400" alt="Model structure">
  
  - To train the model, run *encoder_decoder.ipynb* in root directory.
+ 
+ ## Generated Report
+- The model was trained for 10 epochs. Due to computational difficulties, we were unable to train for more epochs and hence the model did not converge. 
+- Final BLEU score was 0.643
+ <p align="center">
+<img src="https://github.com/01pooja10/Medical-Report-Generator/blob/main/misc/generated_report.png" height="300" alt="Generated Report">
 
 ## Dependencies
 - TensorFlow 2.4.1
