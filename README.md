@@ -35,7 +35,9 @@ The three main proposals of the paper are:
 - Hierarchical LSTM model
 
 ## Implementation details
- - Reports were extraced from .xml files and the frontal and lateral views were combined to generate features
+ - The zip files containing images and reports were mounted from Google Drive.
+ - A dataset was prepared through a data cleaning process that consists of two images per report, one frontal and one lateral view.
+ - Reports were extraced from .xml files and the frontal and lateral views were combined to prepare the above mentioned dataset and this was used to generate features.
  - glove.840B.300d was used for obtaining vector representations and generating the embedding matrix. It is available [here](https://nlp.stanford.edu/projects/glove/).
  - Features were extracted using DenseNet121 model loaded with ChexNet weights. The paper used a VGG-19 network.
  - The features were fed into a model with the following structure
@@ -55,6 +57,13 @@ The three main proposals of the paper are:
 - Keras 2.4.3
 - Numpy
 - Pandas 1.1.5
+- Sklearn 0.23.2
+- PIL 8.0.1
+- Nltk 3.5
+- Matplotlib 3.3.2
+- Opencv 4.5.1
+- Tqdm 4.50.2
+- OS
 
 ## To-do
 - [ ] Complete tag prediction using MLC
