@@ -39,7 +39,9 @@ The three main proposals of the paper are:
  - A dataset was prepared through a data cleaning process that consists of two images per report, one frontal and one lateral view.
  - Reports were extraced from .xml files and the frontal and lateral views were combined to prepare the above mentioned dataset and this was used to generate features.
  - glove.840B.300d was used for obtaining vector representations and generating the embedding matrix. It is available [here](https://nlp.stanford.edu/projects/glove/).
- - Features were extracted using DenseNet121 model loaded with ChexNet weights. The paper used a VGG-19 network.
+   - To run the model, download the glove file and add to MedGen folder.
+ - Features were extracted using DenseNet121 model loaded with ChexNet weights (available [here](https://www.kaggle.com/theewok/chexnet-keras-weights)). The paper used a VGG-19 network.
+   - The features are available in ./features directory. 
  - The features were fed into a model with the following structure
 <p align="center">
 <img src="https://github.com/01pooja10/Medical-Report-Generator/blob/main/misc/attn_mod.jpg" height="400" alt="Model structure">
@@ -73,4 +75,6 @@ The three main proposals of the paper are:
 - [Indira Dutta](https://github.com/indiradutta)
 - [Pooja Ravi](https://github.com/01pooja10)
 - [Sashrika Surya](https://github.com/sashrika15)
+
+For any queries, please open an issue at the repository, or email any of the contributors.
 
