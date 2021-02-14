@@ -1,9 +1,18 @@
+import os
+from tensorflow.keras.applications import DenseNet121
+from tensorflow.keras.layers import Dense
+from keras.models import Model
+import pandas as pd
+
+dirname = os.path.dirname(os.path.realpath('__file__'))
+
+
 chest2=DenseNet121(include_top=False,weights=None,input_shape=(224,224,3))
 last2=chest2.output
 last2=Dense(14,activation='sigmoid')(last2)
 
 mod2=Model(inputs=chest2.input,outputs=last2)
-mod2.load_weights('/content/chexnet_weights.h5')
+mod2.load_weights(dirname+'/features/chexnet_weights.h5')
 mod2=Model(inputs=mod2.input,outputs=mod2.layers[-2].output)
 #mod2.summary()
 
@@ -21,13 +30,11 @@ def get_features(data):
     chex_features={}
     for i,j,k,l in data.values:
 
-        #img1=Image.open('/content/drive/My Drive/data rescon/images/'+j+'.png')
-        img1=Image.open('/content/final/images/'+j+'.jpg')
+        img1=Image.open(dirname+'/data/images/'+j+'.jpg')
         img1=img_preprocess(img1)
         img1_feat=mod2.predict(img1)
 
-        #img2=Image.open('/content/drive/My Drive/data rescon/images/'+k+'.png')
-        img2=Image.open('/content/final/images/'+k+'.jpg')
+        img2=Image.open(dirname+'/data/images/'+j+'.jpg')
         img2=img_preprocess(img2)
         img2_feat=mod2.predict(img2)
 
@@ -37,6 +44,10 @@ def get_features(data):
         chex_features[i]=mod_in
 
     return chex_features
+
+
+train=pd.read_csv(dirname+'/data/traindata.csv')
+test=pd.read_csv(dirname+'/data/testdata.csv')
 
 train_features=get_features(train)
 train_feat=train_features.values()
